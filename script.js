@@ -3,8 +3,24 @@
 var altura = 0;
 var largura = 0;
 var vidas = 1;
-
 var tempo = 10;
+
+var criarMosquitoTempo = 1500;
+
+var nivel = window.location.search;
+nivel = nivel.replace('?', '');
+
+if(nivel === 'normal'){
+    //1500
+    criarMosquitoTempo = 1500;
+} else if (nivel === 'dificil'){
+    //1000
+    criarMosquitoTempo = 1000;
+} else if (nivel === 'ultra hard'){
+    //750
+    criarMosquitoTempo = 750;
+}
+
 
 function ajustaTamanhoJogo(){
 
@@ -21,7 +37,7 @@ var cronometro = setInterval(function(){
     if(tempo < 0 ){
         clearInterval(cronometro);
         clearInterval(criaMosca);
-        alert('vitoria');
+        window.location.href = "vitoria.html"
     } else {
         document.getElementById('cronometro').innerHTML = tempo
     }
